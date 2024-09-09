@@ -15,14 +15,16 @@ public class TouristRepository {
         populateAttractions();
     }
 
-    public boolean addAttraction(TouristAttraction touristAttraction){
-        return touristAttractions.add(touristAttraction);
+    public TouristAttraction addAttraction(TouristAttraction touristAttraction){
+        if(touristAttractions.add(touristAttraction)) return touristAttraction;
+        else return null;
     }
 
 
     private void populateAttractions(){
-        touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark"));
-        touristAttractions.add(new TouristAttraction("Københavns ZOO", "Zoologisk have"));
+        touristAttractions.add(new TouristAttraction(1, "Tivoli", "Forlystelsespark"));
+        touristAttractions.add(new TouristAttraction(2, "Københavns ZOO", "Zoologisk have"));
+        touristAttractions.add(new TouristAttraction(3, "Nationalmuseet", "Danmarks statslige, kulturhistoriske hovedmuseum"));
     }
 
     public List<TouristAttraction> getTouristAttractions() {

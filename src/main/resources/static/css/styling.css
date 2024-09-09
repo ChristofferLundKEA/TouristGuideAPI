@@ -1,0 +1,162 @@
+/* Mobile first layout */
+body {
+    min-height: 100vh; /* Sæt body-højden til mindst 100% af skærmhøjden */
+    display: grid; /* Aktiverer grid-layout */
+    grid-gap: 1em; /* Mellemrum mellem grid-områder */
+    grid-template-areas:
+            'header'  /* Headeren fylder hele bredden */
+            'nav'     /* Navigationen fylder hele bredden */
+            'main'    /* Hovedindholdet fylder hele bredden */
+            'footer'; /* Foderen fylder hele bredden */
+    grid-template-rows:auto auto 1fr auto; /* Højden på rækkerne */
+    grid-template-columns: 1fr; /* Kun én kolonne */
+}
+
+/* bruges hvis min-width er 40em eller større */
+@media (min-width: 40em) {
+    body {
+        /* Horisontal centrering, 80% bredde */
+        width: 80%;
+        margin: 0 auto;grid-template-areas:
+            'header header'  /* Headeren fylder begge kolonner */
+            'nav main'       /* Navigationen til venstre, hovedindhold til højre */
+            'footer footer'; /* Footeren fylder begge kolonner */
+        grid-template-columns: 12em 1fr; /* To kolonner: nav er 12em bred, main fylder resten */
+        grid-template-rows: auto 1fr auto; /* Højden på rækkerne */
+    }
+}
+
+/* Placering af indhold i grid-områder */
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: nav;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+}
+
+
+
+/* Styling */
+header {
+    display: flex;                  /* Flexbox for layout */
+    justify-content: center;        /* Center the content horizontally */
+    align-items: center;            /* Align items vertically */
+    height: 250px;                  /* Set the fixed height for the header */
+    padding: 0 20px;                /* Horizontal padding */
+    position: relative;             /* Ensure proper layout positioning */
+    overflow: hidden;               /* Prevent overflow */
+    border-radius: 10px;
+}
+
+main {
+    text-align: left;
+}
+
+nav {
+    border-radius: 10px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+main .frontpage_attractions div {
+    flex: 1;                        /* Make divs flexible */
+    max-width: 350px;               /* Set a max width slightly larger than images */
+    padding: 15px;                  /* Add padding inside the div */
+    border: 1px solid #ccc;         /* Add a light border */
+    text-align: center;             /* Center text and images inside each div */
+    background-color: #f9f9f9;      /* Light background */
+    border-radius: 10px;            /* Rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
+
+
+}
+
+main .frontpage_attractions {
+    display: flex;                  /* Use flexbox to arrange divs horizontally */
+    justify-content: space-between; /* Space between the divs */
+    flex-wrap: wrap;                /* Allow wrapping if the screen is small */
+    gap: 20px;                      /* Space between divs */
+    margin-top: 20px;               /* Add space between text and divs */
+}
+
+main .frontpage_attractions a {
+    text-decoration: none;     /* Specifically target links and remove underline */
+    color: inherit;            /* Ensure links inherit color */
+}
+
+main .frontpage_attractions div img {
+    width: 300px;                    /* Set a consistent width for images */
+    height: auto;                    /* Maintain aspect ratio */
+    border-radius: 10px;             /* Slight rounding of image corners */
+}
+
+main .frontpage_attractions div:hover {
+    transform: scale(1.01);          /* Slightly enlarge the div on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add a subtle shadow on hover */
+}
+
+main .frontpage_attractions div:hover img {
+    filter: brightness(0.9);         /* Darken the image slightly on hover */
+}
+
+header .logo{
+    width: auto;                  /* Set desired width */
+    height: 100%;                 /* Maintain aspect ratio */
+    transform: translate(13px, -20px); /* Move X px right, X px up */
+}
+
+header .header-text {
+    position: absolute;             /* Position the text on top of the logo */
+    font-weight: bold;
+    font-size: 40px;                /* Set the font size */
+    color: inherit;                   /* White text for contrast */
+    top: 50%;                       /* Vertically center the text */
+    left: 50%;                      /* Horizontally center the text */
+    transform: translate(-50%, -50%); /* Ensure perfect centering */
+    white-space: nowrap;            /* Prevent text wrapping */
+}
+
+header a {
+    position: relative;             /* Container for logo and text */
+    display: inline-block;
+    text-decoration: none;          /* Remove link underline */
+    color: inherit;                 /* Inherit text color */
+}
+
+nav ul{
+    list-style: none;
+    padding: 0;
+}
+
+nav a{
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background: #3c3c3c;
+}
+
+header,
+nav,
+main,
+footer {
+    background: #f4f4f4;padding: 1em;
+}
